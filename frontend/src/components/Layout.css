@@ -1,0 +1,71 @@
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.content-header {
+    height: 70px;
+    background: white;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 40;
+}
+
+.search-placeholder input {
+    width: 350px;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    border: 1.5px solid #f1f5f9;
+    background: #f8fafc;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.search-placeholder input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background: white;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.last-login {
+    font-size: 0.8125rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.user-avatar-small {
+    width: 35px;
+    height: 35px;
+    background: #4f46e5;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.page-view {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}

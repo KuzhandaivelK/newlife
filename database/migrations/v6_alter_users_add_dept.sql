@@ -1,0 +1,4 @@
+-- V6: Add USER_DEPT to USER_MASTER table
+ALTER TABLE USER_MASTER ADD (
+    user_dept VARCHAR2(50)
+);
