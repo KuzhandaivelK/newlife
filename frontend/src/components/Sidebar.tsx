@@ -30,6 +30,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onLogout }) => {
         { name: 'Auto Process', icon: RefreshCcw, path: '/auto-process' },
     ];
 
+    // Retrieve user details from localStorage
+    const savedUser = JSON.parse(localStorage.getItem('user') || '{"userName": "Guest", "userRole": "User"}');
+
     return (
         <aside className="sidebar">
             <div className="sidebar-brand">
@@ -40,8 +43,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onLogout }) => {
             <div className="sidebar-user">
                 <UserCircle size={40} className="user-icon" />
                 <div className="user-info">
-                    <p className="user-name">kins_user</p>
-                    <p className="user-role">Administrator</p>
+                    <p className="user-name">{savedUser.userName}</p>
+                    <p className="user-role">{savedUser.userRole}</p>
                 </div>
             </div>
 

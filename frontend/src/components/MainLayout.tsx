@@ -8,6 +8,10 @@ interface LayoutProps {
 }
 
 const MainLayout: React.FC<LayoutProps> = ({ onLogout }) => {
+    // Retrieve user details from localStorage
+    const savedUser = JSON.parse(localStorage.getItem('user') || '{"userName": "Guest", "userRole": "User"}');
+    const initials = savedUser.userName.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase();
+
     return (
         <div className="layout-container">
             <Sidebar onLogout={onLogout} />
@@ -18,7 +22,7 @@ const MainLayout: React.FC<LayoutProps> = ({ onLogout }) => {
                     </div>
                     <div className="header-actions">
                         <span className="last-login">Last Login: {new Date().toLocaleDateString()}</span>
-                        <div className="user-avatar-small">JS</div>
+                        <div className="user-avatar-small">{initials}</div>
                     </div>
                 </header>
                 <div className="page-view">

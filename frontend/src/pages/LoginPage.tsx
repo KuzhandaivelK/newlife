@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
+import { authApi } from '../api/authApi';
 import { Lock, User, LayoutDashboard } from 'lucide-react';
 
 interface LoginPageProps {
@@ -11,13 +12,20 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Mock authentication
-        if (id === 'kins_user' && password === 'kins_user') {
-            onLogin();
-        } else {
-            setError('Invalid credentials. Hint: kins_user / kins_user');
+        setError('');
+        
+        try {
+            const response = await authApi.login({ userId: id, password });
+            if (response.data.success) {
+                // Store user details (optional)
+                localStorage.setItem('user', JSON.stringify(response.data));
+                onLogin();
+            }
+        } catch (err: any) {
+            setError(err.response?.data?.message || 'Authentication failed. Check if server is running.');
+            console.error(err);
         }
     };
 
